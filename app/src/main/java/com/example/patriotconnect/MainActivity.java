@@ -13,7 +13,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.widget.FrameLayout;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, HousingFragment.OnFragmentInteractionListener {
@@ -85,15 +84,15 @@ public class MainActivity extends AppCompatActivity
 
             }
 
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_housing) {
 
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_tools) {
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_settings) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_about) {
 
         }
 
