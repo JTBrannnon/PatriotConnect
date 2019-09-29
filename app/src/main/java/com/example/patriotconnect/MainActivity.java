@@ -93,6 +93,8 @@ public class MainActivity extends AppCompatActivity
             housingFragment = new HousingFragment();
             FragmentTransaction housingFrag = getSupportFragmentManager().beginTransaction();
             housingFrag.replace(R.id.container, housingFragment).commit();
+            setTitle(getResources().getString(R.string.nav_housing_title));
+
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_tools) {
