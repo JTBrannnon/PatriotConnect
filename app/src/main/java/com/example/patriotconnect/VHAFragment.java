@@ -7,27 +7,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import butterknife.BindView;
-import butterknife.ButterKnife;
+public class VHAFragment extends Fragment {
 
+    private onVHAFragmentInteractionListener mListener;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link OnHousingFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link HousingFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class HousingFragment extends Fragment implements View.OnClickListener {
-
-    @BindView(R.id.btn_pick) Button btn_pick;
-
-    private OnHousingFragmentInteractionListener mListener;
-    private View mView;
-
-    public HousingFragment() {
+    public VHAFragment() {
         // Required empty public constructor
     }
 
@@ -37,11 +21,11 @@ public class HousingFragment extends Fragment implements View.OnClickListener {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment HousingFragment.
+     * @return A new instance of fragment VHAFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static HousingFragment newInstance(String param1, String param2) {
-        HousingFragment fragment = new HousingFragment();
+    public static VHAFragment newInstance(String param1, String param2) {
+        VHAFragment fragment = new VHAFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -55,31 +39,25 @@ public class HousingFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        mView = inflater.inflate(R.layout.fragment_housing, container, false);
-
-        Button btn_pick = (Button) mView.findViewById(R.id.btn_pick);
-        btn_pick.setOnClickListener(this);
-
         // Inflate the layout for this fragment
-        return mView;
+        return inflater.inflate(R.layout.fragment_vha, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
-            mListener.onHousingInteraction();
+            mListener.onVHAFragmentInteraction(uri);
         }
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnHousingFragmentInteractionListener) {
-            mListener = (OnHousingFragmentInteractionListener) context;
+        if (context instanceof onVHAFragmentInteractionListener) {
+            mListener = (onVHAFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnHousingFragmentInteractionListener");
+                    + " must implement onVHAFragmentInteractionListener");
         }
     }
 
@@ -87,16 +65,6 @@ public class HousingFragment extends Fragment implements View.OnClickListener {
     public void onDetach() {
         super.onDetach();
         mListener = null;
-    }
-
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.btn_pick:
-                mListener.onHousingInteraction();
-                break;
-
-        }
     }
 
     /**
@@ -109,8 +77,7 @@ public class HousingFragment extends Fragment implements View.OnClickListener {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnHousingFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onHousingInteraction();
+    public interface onVHAFragmentInteractionListener {
+        void onVHAFragmentInteraction(Uri uri);
     }
 }
