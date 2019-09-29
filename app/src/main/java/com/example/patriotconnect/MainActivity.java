@@ -15,10 +15,15 @@ import android.view.Menu;
 import android.widget.FrameLayout;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, HousingFragment.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener, HousingFragment.OnFragmentInteractionListener,
+        SettingsFragment.OnFragmentInteractionListener, AboutFragment.OnFragmentInteractionListener,
+        HomePageFragment.OnFragmentInteractionListener {
 
     private HousingFragment housingFragment;
     private FrameLayout container;
+    private SettingsFragment settingsFragment;
+    private AboutFragment aboutFragment;
+    private HomePageFragment homePageFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,23 +82,29 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            if (housingFragment == null) {
-                housingFragment = new HousingFragment();
-                FragmentTransaction housingFrag = getSupportFragmentManager().beginTransaction();
-                housingFrag.add(R.id.container, housingFragment).commit();
+            if (homePageFragment == null) {
+                homePageFragment = new HomePageFragment();
+                FragmentTransaction homePageFrag = getSupportFragmentManager().beginTransaction();
+                homePageFrag.add(R.id.container, homePageFragment).commit();
 
             }
 
         } else if (id == R.id.nav_housing) {
-
+            housingFragment = new HousingFragment();
+            FragmentTransaction housingFrag = getSupportFragmentManager().beginTransaction();
+            housingFrag.replace(R.id.container, housingFragment).commit();
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_tools) {
 
         } else if (id == R.id.nav_settings) {
-
+            settingsFragment = new SettingsFragment();
+            FragmentTransaction settingsFrag = getSupportFragmentManager().beginTransaction();
+            settingsFrag.replace(R.id.container, settingsFragment).commit();
         } else if (id == R.id.nav_about) {
-
+            aboutFragment = new AboutFragment();
+            FragmentTransaction aboutFrag = getSupportFragmentManager().beginTransaction();
+            aboutFrag.replace(R.id.container, aboutFragment).commit();
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
