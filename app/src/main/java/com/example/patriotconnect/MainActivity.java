@@ -2,6 +2,7 @@ package com.example.patriotconnect;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -15,15 +16,16 @@ import android.view.Menu;
 import android.widget.FrameLayout;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, HousingFragment.OnFragmentInteractionListener,
+        implements NavigationView.OnNavigationItemSelectedListener, HousingFragment.OnHousingFragmentInteractionListener,
         SettingsFragment.OnFragmentInteractionListener, AboutFragment.OnFragmentInteractionListener,
-        HomePageFragment.OnFragmentInteractionListener {
+        HomePageFragment.OnFragmentInteractionListener, VHAFragment.onVHAFragmentInteractionListener {
 
     private HousingFragment housingFragment;
     private FrameLayout container;
     private SettingsFragment settingsFragment;
     private AboutFragment aboutFragment;
     private HomePageFragment homePageFragment;
+    private VHAFragment vhaFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,5 +120,20 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onFragmentInteraction(Uri uri) {
 
+    }
+
+    @Override
+    public void onVHAFragmentInteraction(Uri uri) {
+
+    }
+
+    // on
+    @Override
+    public void onHousingInteraction() {
+        vhaFragment = new VHAFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.container, vhaFragment)
+                .commit();
     }
 }
